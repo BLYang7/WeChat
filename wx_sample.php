@@ -5,6 +5,9 @@
 
 //define your token
 define("TOKEN", "weixin");
+
+echo "string";
+
 $wechatObj = new wechatCallbackapiTest();
 $wechatObj->valid();
 
@@ -16,7 +19,7 @@ class wechatCallbackapiTest
 
         //valid signature , option
         if($this->checkSignature()){
-            // echo $echoStr;
+            echo $echoStr;
             $this->responseMsg();
             exit;
         }

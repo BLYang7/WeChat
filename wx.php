@@ -193,7 +193,7 @@ class wechatCallbackapiTest
             $content = array("Title"=>"最炫民族风", "Description"=>"歌手：凤凰传奇", "MusicUrl"=>"http://121.199.4.61/music/zxmzf.mp3", "HQMusicUrl"=>"http://121.199.4.61/music/zxmzf.mp3"); 
         }else{
             $content = array();
-            $content[] = array("Title"=>"标题",  "Description"=>"内容", "PicUrl"=>"http://img0.imgtn.bdimg.com/it/u=2609450077,4178219781&fm=21&gp=0.jpg", "Url" =>"http://www.blyang.top");
+            $content[] = array("Title"=>"标题",  "Description"=>"内容", "PicUrl"=>"http://imgsrc.baidu.com/forum/w=580/sign=84ddbd17fdedab6474724dc8c734af81/6ad105166d224f4a0076b0cf0ff790529922d12e.jpg", "Url" =>"http://www.blyang.top");
         }
 
         if(is_array($content)){

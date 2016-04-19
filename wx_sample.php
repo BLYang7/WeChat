@@ -16,8 +16,8 @@ class wechatCallbackapiTest
 
         //valid signature , option
         if($this->checkSignature()){
-            // echo $echoStr;
-            $wechatObj->responseMsg;
+            echo $echoStr;
+            $wechatObj->responseMsg();
             exit;
         }
     }

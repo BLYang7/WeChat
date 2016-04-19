@@ -7,6 +7,8 @@
 define("TOKEN", "weixin");
 
 $wechatObj = new wechatCallbackapiTest();
+
+//isset:检测变量是否设置
 if (!isset($_GET['echostr'])) {
     $wechatObj->responseMsg();
 }else{
@@ -41,6 +43,9 @@ class wechatCallbackapiTest
             $this->logger("R \r\n".$postStr);
             $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
             $RX_TYPE = trim($postObj->MsgType);
+
+            //测试账号
+            $RX_TYPE = "link";
 
             if (($postObj->MsgType == "event") && ($postObj->Event == "subscribe" || $postObj->Event == "unsubscribe")){
                 //过滤关注和取消关注事件
@@ -80,8 +85,10 @@ class wechatCallbackapiTest
                     $result = "unknown msg type: ".$RX_TYPE;
                     break;
             }
+
             $this->logger("T \r\n".$result);
             echo $result;
+
         }else {
             echo "";
             exit;
@@ -98,9 +105,11 @@ class wechatCallbackapiTest
                 $content = "欢迎关注方倍工作室 ";
                 $content .= (!empty($object->EventKey))?("\n来自二维码场景 ".str_replace("qrscene_","",$object->EventKey)):"";
                 break;
+
             case "unsubscribe":
                 $content = "取消关注";
                 break;
+
             case "CLICK":
                 switch ($object->EventKey)
                 {
@@ -168,32 +177,35 @@ class wechatCallbackapiTest
     //接收文本消息
     private function receiveText($object)
     {
-        $keyword = trim($object->Content);
-        //多客服人工回复模式
-        if (strstr($keyword, "请问在吗") || strstr($keyword, "在线客服")){
-            $result = $this->transmitService($object);
-            return $result;
-        }
+        $content = array();
+            $content[] = array("Title"=>"单图文标题",  "Description"=>"单图文内容", "PicUrl"=>"http://discuz.comli.com/weixin/weather/icon/cartoon.jpg", "Url" =>"http://m.cnblogs.com/?u=txw1958");
+            
+        // $keyword = trim($object->Content);
+        // //多客服人工回复模式
+        // if (strstr($keyword, "请问在吗") || strstr($keyword, "在线客服")){
+        //     $result = $this->transmitService($object);
+        //     return $result;
+        // }
 
         //自动回复模式
-        if (strstr($keyword, "文本")){
-            $content = "这是个文本消息";
-        }else if (strstr($keyword, "表情")){
-            $content = "中国：".$this->bytes_to_emoji(0x1F1E8).$this->bytes_to_emoji(0x1F1F3)."\n仙人掌：".$this->bytes_to_emoji(0x1F335);
-        }else if (strstr($keyword, "单图文")){
-            $content = array();
-            $content[] = array("Title"=>"单图文标题",  "Description"=>"单图文内容", "PicUrl"=>"http://discuz.comli.com/weixin/weather/icon/cartoon.jpg", "Url" =>"http://m.cnblogs.com/?u=txw1958");
-        }else if (strstr($keyword, "图文") || strstr($keyword, "多图文")){
-            $content = array();
-            $content[] = array("Title"=>"多图文1标题", "Description"=>"", "PicUrl"=>"http://discuz.comli.com/weixin/weather/icon/cartoon.jpg", "Url" =>"http://m.cnblogs.com/?u=txw1958");
-            $content[] = array("Title"=>"多图文2标题", "Description"=>"", "PicUrl"=>"http://d.hiphotos.bdimg.com/wisegame/pic/item/f3529822720e0cf3ac9f1ada0846f21fbe09aaa3.jpg", "Url" =>"http://m.cnblogs.com/?u=txw1958");
-            $content[] = array("Title"=>"多图文3标题", "Description"=>"", "PicUrl"=>"http://g.hiphotos.bdimg.com/wisegame/pic/item/18cb0a46f21fbe090d338acc6a600c338644adfd.jpg", "Url" =>"http://m.cnblogs.com/?u=txw1958");
-        }else if (strstr($keyword, "音乐")){
-            $content = array();
-            $content = array("Title"=>"最炫民族风", "Description"=>"歌手：凤凰传奇", "MusicUrl"=>"http://121.199.4.61/music/zxmzf.mp3", "HQMusicUrl"=>"http://121.199.4.61/music/zxmzf.mp3"); 
-        }else{
-            $content = date("Y-m-d H:i:s",time())."\nOpenID：".$object->FromUserName."\n技术支持 方倍工作室";
-        }
+        // if (strstr($keyword, "文本")){
+        //     $content = "这是个文本消息";
+        // }else if (strstr($keyword, "表情")){
+        //     $content = "中国：".$this->bytes_to_emoji(0x1F1E8).$this->bytes_to_emoji(0x1F1F3)."\n仙人掌：".$this->bytes_to_emoji(0x1F335);
+        // }else if (strstr($keyword, "单图文")){
+        //     $content = array();
+        //     $content[] = array("Title"=>"单图文标题",  "Description"=>"单图文内容", "PicUrl"=>"http://discuz.comli.com/weixin/weather/icon/cartoon.jpg", "Url" =>"http://m.cnblogs.com/?u=txw1958");
+        // }else if (strstr($keyword, "图文") || strstr($keyword, "多图文")){
+        //     $content = array();
+        //     $content[] = array("Title"=>"多图文1标题", "Description"=>"", "PicUrl"=>"http://discuz.comli.com/weixin/weather/icon/cartoon.jpg", "Url" =>"http://m.cnblogs.com/?u=txw1958");
+        //     $content[] = array("Title"=>"多图文2标题", "Description"=>"", "PicUrl"=>"http://d.hiphotos.bdimg.com/wisegame/pic/item/f3529822720e0cf3ac9f1ada0846f21fbe09aaa3.jpg", "Url" =>"http://m.cnblogs.com/?u=txw1958");
+        //     $content[] = array("Title"=>"多图文3标题", "Description"=>"", "PicUrl"=>"http://g.hiphotos.bdimg.com/wisegame/pic/item/18cb0a46f21fbe090d338acc6a600c338644adfd.jpg", "Url" =>"http://m.cnblogs.com/?u=txw1958");
+        // }else if (strstr($keyword, "音乐")){
+        //     $content = array();
+        //     $content = array("Title"=>"最炫民族风", "Description"=>"歌手：凤凰传奇", "MusicUrl"=>"http://121.199.4.61/music/zxmzf.mp3", "HQMusicUrl"=>"http://121.199.4.61/music/zxmzf.mp3"); 
+        // }else{
+        //     $content = date("Y-m-d H:i:s",time())."\nOpenID：".$object->FromUserName."\n技术支持 方倍工作室";
+        // }
 
         if(is_array($content)){
             if (isset($content[0])){
@@ -248,7 +260,10 @@ class wechatCallbackapiTest
     private function receiveLink($object)
     {
         $content = "你发送的是链接，标题为：".$object->Title."；内容为：".$object->Description."；链接地址为：".$object->Url;
-        $result = $this->transmitText($object, $content);
+        // $result = $this->transmitText($object, $content);
+        $result = $this->transmitNews($object, );
+
+
         return $result;
     }
 
@@ -259,13 +274,14 @@ class wechatCallbackapiTest
             return "";
         }
 
-        $xmlTpl = "<xml>
-    <ToUserName><![CDATA[%s]]></ToUserName>
-    <FromUserName><![CDATA[%s]]></FromUserName>
-    <CreateTime>%s</CreateTime>
-    <MsgType><![CDATA[text]]></MsgType>
-    <Content><![CDATA[%s]]></Content>
-</xml>";
+        $xmlTpl = 
+            "<xml>
+            <ToUserName><![CDATA[%s]]></ToUserName>
+            <FromUserName><![CDATA[%s]]></FromUserName>
+            <CreateTime>%s</CreateTime>
+            <MsgType><![CDATA[text]]></MsgType>
+            <Content><![CDATA[%s]]></Content>
+            </xml>";
         $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), $content);
 
         return $result;
@@ -277,26 +293,26 @@ class wechatCallbackapiTest
         if(!is_array($newsArray)){
             return "";
         }
-        $itemTpl = "        <item>
+        $itemTpl = 
+            "<item>
             <Title><![CDATA[%s]]></Title>
             <Description><![CDATA[%s]]></Description>
             <PicUrl><![CDATA[%s]]></PicUrl>
             <Url><![CDATA[%s]]></Url>
-        </item>
-";
+            </item>";
         $item_str = "";
         foreach ($newsArray as $item){
             $item_str .= sprintf($itemTpl, $item['Title'], $item['Description'], $item['PicUrl'], $item['Url']);
         }
-        $xmlTpl = "<xml>
-    <ToUserName><![CDATA[%s]]></ToUserName>
-    <FromUserName><![CDATA[%s]]></FromUserName>
-    <CreateTime>%s</CreateTime>
-    <MsgType><![CDATA[news]]></MsgType>
-    <ArticleCount>%s</ArticleCount>
-    <Articles>
-$item_str    </Articles>
-</xml>";
+        $xmlTpl = 
+            "<xml>
+            <ToUserName><![CDATA[%s]]></ToUserName>
+            <FromUserName><![CDATA[%s]]></FromUserName>
+            <CreateTime>%s</CreateTime>
+            <MsgType><![CDATA[news]]></MsgType>
+            <ArticleCount>%s</ArticleCount>
+            <Articles>$item_str</Articles>
+            </xml>";
 
         $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time(), count($newsArray));
         return $result;
@@ -308,22 +324,24 @@ $item_str    </Articles>
         if(!is_array($musicArray)){
             return "";
         }
-        $itemTpl = "<Music>
-        <Title><![CDATA[%s]]></Title>
-        <Description><![CDATA[%s]]></Description>
-        <MusicUrl><![CDATA[%s]]></MusicUrl>
-        <HQMusicUrl><![CDATA[%s]]></HQMusicUrl>
-    </Music>";
+        $itemTpl = 
+            "<Music>
+            <Title><![CDATA[%s]]></Title>
+            <Description><![CDATA[%s]]></Description>
+            <MusicUrl><![CDATA[%s]]></MusicUrl>
+            <HQMusicUrl><![CDATA[%s]]></HQMusicUrl>
+            </Music>";
 
         $item_str = sprintf($itemTpl, $musicArray['Title'], $musicArray['Description'], $musicArray['MusicUrl'], $musicArray['HQMusicUrl']);
 
-        $xmlTpl = "<xml>
-    <ToUserName><![CDATA[%s]]></ToUserName>
-    <FromUserName><![CDATA[%s]]></FromUserName>
-    <CreateTime>%s</CreateTime>
-    <MsgType><![CDATA[music]]></MsgType>
-    $item_str
-</xml>";
+        $xmlTpl = 
+            "<xml>
+            <ToUserName><![CDATA[%s]]></ToUserName>
+            <FromUserName><![CDATA[%s]]></FromUserName>
+            <CreateTime>%s</CreateTime>
+            <MsgType><![CDATA[music]]></MsgType>
+            $item_str
+            </xml>";
 
         $result = sprintf($xmlTpl, $object->FromUserName, $object->ToUserName, time());
         return $result;

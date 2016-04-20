@@ -1,0 +1,400 @@
+/********************************************************
+ * 页面 0
+ ********************************************************/
+body{
+    margin-top: 0px;
+    margin-left: 1px;
+    margin-right: 1px;
+    margin-bottom: 0px;
+}
+
+.navigator{
+    background-color: lightpink;
+    height: 80px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 80px;
+    font-family: "Arial Black";
+    position: relative;
+}
+
+.navigator_button{
+
+    max-height: 40px;
+    max-width: 36px;
+    float: left;
+    width:expression(this.width > 36 && this.height < this.width ? 36 : true);
+    height:expression(this.height > 40 ? 40 : true);
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+.navigator_button_left{
+
+    max-height: 40px;
+    max-width: 36px;
+    float: right;
+    width:expression(this.width > 36 && this.height < this.width ? 36 : true);
+    height:expression(this.height > 40 ? 40 : true);
+    margin-top: 20px;
+    margin-right: 15px;
+}
+
+#top_left_0{
+    width: 50%;
+    height: 200px;
+    float: left;
+    text-align: center;
+    background-color: lightpink;
+}
+
+.img{
+    max-height: 50px;
+    max-width: 50px;
+    margin-top: 50px;
+    width:expression(this.width > 50 && this.height < this.width ? 50 : true);
+    height:expression(this.height > 50 ? 50 : true);
+
+}
+
+#top_right_0{
+    width: 50%;
+    height: 200px;
+    float: right;
+    text-align: center;
+    background-color: lightpink;
+}
+
+/********************************************************
+ * 页面 1
+ ********************************************************/
+#title{
+    margin-top: 20px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 40px;
+    font-family: "Arial Black";
+    background-color: beige;
+}
+
+#top_left_1{
+    width: 47%;
+    height: auto;
+    float: left;
+    margin-top: 20px;
+    margin-left: 10px;
+    background-color: beige;
+}
+
+#top_right_1{
+    width: 47%;
+    height: auto;
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+    background-color: beige;
+}
+
+.img_1{
+    height:400px;
+    width:100%;
+    overflow: hidden;
+}
+
+#dianzan{
+    width:100%;
+    height:auto;
+    text-align: center;
+    padding-top: 30px;
+    float: left;
+}
+
+#zan_a_pic, #zan_b_pic{
+     height:40px;
+     widht:40px;
+     overflow: hidden;
+ }
+
+#versus{
+    height:40px;
+    widht:40px;
+    overflow: hidden;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#bottom_button{
+    float: left;
+    width: 90%;
+    margin-left: 5%;
+    height:auto;
+    margin-top: 70px;
+    text-align: center;
+}
+#button_regitster{
+    background-color: beige;
+    margin-right: 10%;
+    width:30%;
+    height: 50px;
+}
+
+#button_star{
+    background-color: antiquewhite;
+    margin-left: 10%;
+    width:30%;
+    height:50px;
+}
+
+
+/********************************************************
+ * 页面 2
+ ********************************************************/
+
+.page_2_title{
+    text-align: center;
+    margin-left: 5%;
+    width:90%;
+    height:60px;
+    line-height: 60px;
+    float: left;
+    font-size: 30px;
+    font-family: "Andale Mono";
+    margin-top: 20px;
+    background-color: beige;
+}
+
+.page_2_list{
+    background-color: beige;
+    height: auto;
+    margin-top: 10%;
+    width:94%;
+    margin-left: 3%;
+    border: solid;
+    border-color: darksalmon;
+    border-width: 3px;
+}
+
+.list_ul{
+    width:94%;
+    height:auto;
+}
+
+li{list-style-type:none;}
+
+.list_ul li:nth-of-type(odd){ background-color: gainsboro;}
+.list_ul li:nth-of-type(even){ background-color: aliceblue}
+
+.list_ul li{
+    width:94%;
+    height:60px;
+    line-height: 60px;
+    vertical-align: middle;
+}
+
+.page_2_list_zan_pic{
+    height:40px;
+    widht:40px;
+    display: inline;
+    margin-left: 20%;
+}
+
+.page_2_list_zan_txt{
+    font-size: 27px;
+    font-family: "Apple Symbols";
+}
+
+.page_2_list_zan_btn{
+    height:40px;
+    widht:70px;
+    margin-left: 10px;
+    background-color: bisque;
+}
+
+/********************************************************
+ * 页面 3
+ ********************************************************/
+
+.list_user_name{
+    font-size: 23px;
+    font-weight: bold;
+    font-family: AppleMyungjo;
+}
+
+.list_school_name{
+    font-size: 20px;
+    color: #9B9B9B;
+}
+
+.list_float_right_div{
+    float: right;
+    display: inline;
+    margin-right: 5%;
+}
+
+.list_zan_pic{
+    width:40px;
+    height:40px;
+    align: absmiddle;
+}
+
+.list_zan_num_txt{
+    font-size: 17px;
+    font-family: "Arial Black";
+}
+
+.list_home_btn{
+    width:40px;
+    height:40px;
+    margin-left: 10px;
+    display: inline;
+}
+
+
+/********************************************************
+ * 页面 4
+ ********************************************************/
+
+.page_4_title{
+    margin-top: 30px;
+    margin-left: 5%;
+}
+
+.moddle_name{
+    font-size: 40px;
+    font-family: "Arial Hebrew";
+    font-weight: bold;
+    display: inline;
+}
+
+.moddle_school{
+    font-size: 30px;
+    font-family: AppleMyungjo;
+    color: #9B9B9B;
+    display: inline;
+}
+
+.page_4_info{
+    margin-top: 20px;
+    margin-left: 5%;
+}
+
+.sort_msg{
+    float: left;
+    margin-left: 50px;
+}
+
+.sort_msg_num{
+    font-size: 37px;
+    font-weight: bold;
+}
+
+.sort_msg_txt{
+    font-size: 27px;
+    color: #9B9B9B;
+}
+
+.image_show{
+    width:80%;
+    height: auto;
+    float: left;
+    margin-left: 10%;
+}
+
+.bottom_support_btn{
+    float: left;
+    width: 40%;
+    height:100px;
+    margin-left: 30%;
+    background-color: lightblue;
+    font-size: 50px;
+    text-align: center;
+    line-height: 100px;
+    color: #454545 ;
+}
+
+
+/********************************************************
+ * 页面 4
+ ********************************************************/
+
+.page_5_title_img{
+    width:90px;
+    height:90px;
+    display: inline;
+    float: left;
+    background-color: #A1A1A1;
+}
+
+.page_5_name{
+    font-size: 27px;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-family: "Apple Symbols";
+}
+
+.page_5_zan{
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+
+.page_5_zan_pic{
+    width:37px;
+    height:37px;
+    float: left;
+}
+
+.page_5_zan_num{
+    font-size: 20px;
+    font-family: "Arial";
+    float: left;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.page_5_btn{
+    float: left;
+    width: 86%;
+    height:100px;
+    margin-left: 7%;
+}
+
+.support_her_btn{
+    width: 40%;
+    height:100px;
+    line-height: 100px;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: lightpink;
+    font-size: 27px;
+    color: #5A5A5A;
+    float: left;
+}
+
+
+.change_one_btn{
+    width: 40%;
+    height:100px;
+    line-height: 100px;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: lightblue;
+    font-size: 27px;
+    color: #5A5A5A;
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+

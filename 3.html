@@ -9,6 +9,26 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <link rel="stylesheet" href="css/style.css">
+    <!-- 检测手机系统-->
+    <script>!function (userAgent) {
+        var screen_w = parseInt(window.screen.width), scale = screen_w / 640;
+        if (/Android (\d+\.\d+)/.test(userAgent)) {
+            var version = parseFloat(RegExp.$1);
+            document.write(version > 2.3 ? '<meta name="viewport" content="width=640, initial-scale = ' + scale + ',user-scalable=1, minimum-scale = ' + scale + ', maximum-scale = ' + scale + ', target-densitydpi=device-dpi">' : '<meta name="viewport" content="width=640, target-densitydpi=device-dpi">');
+        } else {
+            document.write('<meta name="viewport" content="width=640, initial-scale = ' + scale + ' ,minimum-scale = ' + scale + ', maximum-scale = ' + scale + ', user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    }(navigator.userAgent); </script>
+    <script type="text/javascript">
+        window.onload=function(){
+                    var oImg=document.getElementsByTagName('img');
+                    for(i=0;i<oImg.length;i++){
+                        if(oImg[i].width>512){
+                            oImg[i].width=512;
+                        }
+                    }
+                }
+    </script>
 </head>
 <body>
 
